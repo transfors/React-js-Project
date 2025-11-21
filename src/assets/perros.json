@@ -1,0 +1,60 @@
+{
+  "perros": [
+    {
+      "nombre": "Akita japonés",
+      "descripcion": "descripcion 1",
+      "precio": 0.01,
+      "imagen": "/img_perros/Akita_japonés.png",
+      "id": "1"
+    },
+    {
+      "nombre": "Basenji",
+      "descripcion": "descripcion 2",
+      "precio": 0.01,
+      "imagen": "/img_perros/Basenji.png",
+      "id": "2"
+    },
+    {
+      "nombre": "Bichón frisé",
+      "descripcion": "descripcion 3",
+      "precio": 0.01,
+      "imagen": "/img_perros/Bichón_frisé.png",
+      "id": "3"
+    },
+    {
+      "nombre": "Border collie",
+      "descripcion": "descripcion 4",
+      "precio": 0.01,
+      "imagen": "/img_perros/Border_collie.png",
+      "id": "4"
+    },
+    {
+      "nombre": "Boston terrier",
+      "descripcion": "descripcion 5",
+      "precio": 0.01,
+      "imagen": "/img_perros/Boston_terrier.png",
+      "id": "5"
+    },
+    {
+      "nombre": "Braco húngaro",
+      "descripcion": "descripcion 6",
+      "precio": 0.01,
+      "imagen": "/img_perros/Braco_húngaro.png",
+      "id": "6"
+    },
+    {
+      "nombre": "Bretón",
+      "descripcion": "descripcion 7",
+      "precio": 0.01,
+      "imagen": "/img_perros/Bretón.png",
+      "id": "7"
+    },
+    {
+      "nombre": "Buhund noruego",
+      "descripcion": "descripcion 8",
+      "precio": 0.01,
+      "imagen": "/img_perros/Buhund_noruego.png",
+      "id": "8"
+    }
+  ]
+}
