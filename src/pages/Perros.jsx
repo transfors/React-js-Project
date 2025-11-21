@@ -17,22 +17,21 @@ const Perros = () => {
         const timeout = setTimeout(() => {
             console.log("TIMEOUT EJECUTADO")
 
-
             try {
-                setPerros(datosPerros.perros);
-                setCargando(false);
+                setPerros(datosPerros.perros)
+                setCargando(false)
 
             } catch (error) {
                 console.error("Error:", error);
                 setError("Hubo un problema al cargar la imagen")
-                setCargando(false);
+                setCargando(false)
             }
-        }, 2000);
+        }, 2000)
 
         return () => {
             clearTimeout(timeout)
             console.log("LIMPIEZA EJECUTADA")
-            console.log("COMPONENTE Gatos DESMONTADO")
+            console.log("COMPONENTE PERROS DESMONTADO")
         }
 
     }, [])

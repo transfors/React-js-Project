@@ -77,8 +77,7 @@ export default function IniciarSesion() {
         <button type="button" onClick={() => navigate('/')} className="btn btn-secondary w-100">
           Cancelar
         </button>
-      </form>
-      
+      </form>      
     </div>
     <div>
     <p 
@@ -91,5 +90,5 @@ export default function IniciarSesion() {
       </p>
       </div>
     </>
-  );
+  )
 }

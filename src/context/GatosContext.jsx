@@ -19,7 +19,7 @@ export const ProductsProvider = ({ children }) => {
     } else {
       const precioLimpio = gato.precio.toString().replace(/\./g, '').replace(',', '.')
       const precioNumerico = parseFloat(precioLimpio)
-     
+
       if (!/^[\d.,]+$/.test(gato.precio.toString().replace(/\./g, ''))) {
         errores.precio = 'Solo números, puntos o comas.'
       } else if (isNaN(precioNumerico)) {
@@ -49,21 +49,56 @@ export const ProductsProvider = ({ children }) => {
   }
 
   useEffect(() => {
+    // 1. Bandera para controlar el estado de montaje
+    let isMounted = true;
+    console.log("useEffect MONTADO/INICIADO (isMounted = true)")
+
     const cargarGatos = async () => {
+      console.log("Intentando cargar datos de la API...")
       try {
         const respuesta = await fetch('https://68d6f23ec2a1754b426c4d01.mockapi.io/gatos');
-        if (!respuesta.ok) throw new Error('Error al cargar mascotas')
+        console.log(`Respuesta de la API recibida. Estado: ${respuesta.status}.`)
+
+        if (!respuesta.ok) {
+          if (isMounted) {
+            throw new Error('Error al cargar mascotas')
+          }
+          return
+        }
+        console.log("ERROR: Componente desmontado, ignorando Error.")
+
         const datos = await respuesta.json()
-        setGatos(datos)
+
+        if (isMounted) {
+          setGatos(datos)
+          console.log("setGatos EJECUTADO. Datos cargados con éxito.")
+        } else {
+          console.log("Componente desmontado, IGNORANDO setGatos.")
+        }
+
       } catch (error) {
         console.error('Error al cargar mascotas:', error)
-        setError("Hubo un problema al cargar las mascotas.")
+        if (isMounted) {
+          setError("Hubo un problema al cargar las mascotas.")
+          console.log("setError EJECUTADO.")
+        }
+
       } finally {
-        setCargando(false)
+        if (isMounted) {
+          setCargando(false)
+          console.log("setCargando(false) EJECUTADO. Carga finalizada.")
+        } else {
+          console.log("Componente desmontado, IGNORANDO setCargando(false).")
+        }
       }
     }
+
     cargarGatos()
-  }, [])
+    
+    return () => {
+      isMounted = false
+    }
+  }, []) 
 
   const agregarGatos = async (nuevoGato) => {
     try {
@@ -129,4 +164,3 @@ export const useProducts = () => {
   }
   return context
 }
-
